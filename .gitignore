@@ -45,3 +45,4 @@ testem.log
 .DS_Store
 Thumbs.db
 /projects/component-library/package-lock.json
+/projects/component-library/node_modules/
