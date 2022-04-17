@@ -1,6 +1,6 @@
 {
-  "name": "stencil-library",
-  "version": "0.0.1",
+  "name": "example-stencil-lib",
+  "version": "0.0.2",
   "description": "Stencil Component Starter",
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
@@ -19,7 +19,7 @@
     "loader/"
   ],
   "scripts": {
-    "build": "stencil build --docs",
+    "build": "stencil build --docs --prod",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
@@ -29,6 +29,7 @@
     "@stencil/core": "^2.13.0"
   },
   "devDependencies": {
+    "@stencil/angular-output-target": "^0.4.0",
     "@types/jest": "^27.0.3",
     "jest": "^27.4.5",
     "jest-cli": "^27.4.5",
