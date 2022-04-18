@@ -1,5 +1,5 @@
-import { Component, Prop, h } from '@stencil/core';
-import { format } from '../../utils/utils';
+import {Component, Event, EventEmitter, h, Listen, Prop, State} from '@stencil/core';
+import {format} from '../../utils/utils';
 
 @Component({
   tag: 'my-component',
@@ -7,26 +7,53 @@ import { format } from '../../utils/utils';
   shadow: true,
 })
 export class MyComponent {
-  /**
-   * The first name
-   */
   @Prop() first: string;
-
-  /**
-   * The middle name
-   */
   @Prop() middle: string;
-
-  /**
-   * The last name
-   */
   @Prop() last: string;
+
+  @State() clicks = 0;
+
+  @Event({
+    eventName: 'todoCompleted',
+    composed: true,
+    cancelable: true,
+    bubbles: true
+  }) todoCompleted: EventEmitter<any>;
+
+  @Listen('todoCompleted')
+  todoCompletedHandler(): void {
+    this.clicks = this.clicks + 1;
+    console.log('todoCompletedHandler', this.clicks);
+  }
+
+  connectedCallback(): void {
+    console.log('MyComponent => connectedCallback');
+  }
+
+  componentWillLoad(): void {
+    console.log('MyComponent => componentWillLoad');
+  }
+
+  componentDidLoad(): void {
+    console.log('MyComponent => componentDidLoad');
+  }
 
   private getText(): string {
     return format(this.first, this.middle, this.last);
   }
 
-  render() {
-    return <div>Hello, World! I'm {this.getText()}</div>;
+  private getClicks(): number {
+    return this.clicks;
+  }
+
+  render(): any {
+    console.log('MyComponent => render');
+    return (
+      <div>
+        <h1>Hello, World! I'm {this.getText()}</h1>
+        <h3>Power level : {this.getClicks()}</h3>
+        <p onClick={() => this.todoCompleted.emit()}>Click me to power up</p>
+      </div>
+    );
   }
 }
