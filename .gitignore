@@ -46,3 +46,4 @@ testem.log
 Thumbs.db
 /projects/component-library/package-lock.json
 /projects/component-library/node_modules/
+/projects/component-library/src/lib/stencil-generated/
