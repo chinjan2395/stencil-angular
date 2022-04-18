@@ -24,13 +24,7 @@ export const config: Config = {
     angularOutputTarget({
       componentCorePackage: 'example-stencil-lib',
       directivesProxyFile: '../../projects/component-library/src/lib/stencil-generated/components.ts',
-      directivesArrayFile: '../../projects/component-library/src/lib/stencil-generated/index.ts',
-      // valueAccessorConfigs: angularValueAccessorBindings,
-      // directivesProxyFile: '../angular-workspace/projects/component-library/src/lib/stencil-generated/components.ts',
-    }),
-    /*{
-      type: 'dist',
-      esmLoaderPath: '../loader',
-    },*/
+      valueAccessorConfigs: angularValueAccessorBindings
+    })
   ],
 };
